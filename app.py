@@ -27,7 +27,11 @@ def predict():
     prediction = model.predict([final_features])
     output = round(prediction[0], 2)
 
-    return render_template('results.html', result=output)
+    if output==1:
+        return render_template('questions.html', prediction_text='Yes,you will survive the Titanic!')
+    else:
+        return render_template('questions.html', prediction_text='No, you will not survive the Titanic!')
+
 
 
 if __name__ == "__main__":
