@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titanic Prediction App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .appname {
+            background: #1e3c72;
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(30,60,114,0.08);
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .news-section, .info-section {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(30,60,114,0.08);
+            padding: 2rem;
+            min-width: 320px;
+            max-width: 480px;
+            flex: 1 1 350px;
+        }
+        .news-sec-head {
+            margin-top: 0;
+            color: #1e3c72;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .news {
+            margin-top: 1rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            min-height: 180px;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.2rem;
+            box-shadow: 0 2px 12px rgba(30,60,114,0.10);
+            color: #fff;
+            font-weight: 500;
+            background-blend-mode: multiply;
+            background-color: rgba(30,60,114,0.35);
+        }
+        #news-title {
+            background: rgba(30,60,114,0.65);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0;
+        }
+        .info-desc h4 {
+            margin-top: 0;
+            color: #2a5298;
+            font-size: 1.2rem;
+        }
+        .info-desc ul {
+            margin: 0 0 1rem 1.2rem;
+            padding: 0;
+        }
+        .info-desc li {
+            margin-bottom: 0.4rem;
+            font-size: 1rem;
+        }
+        .question {
+            margin: 1.2rem 0 0.5rem 0;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        button {
+            margin-top: 1.5rem;
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(30,60,114,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        footer {
+            background: #1e3c72;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="appname textclr">
+        <h1>Titanic Survival Prediction</h1>
+    </div>
+
+    <main>
+        <div class="news-section">
+            <h2 class="news-sec-head darkgreen">Why Titanic Dataset?</h2>
+            <div class="news" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fd/RMS_Titanic_3.jpg');">
+                <p id="news-title">A historic dataset used to predict passenger survival using machine learning.</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-desc textclr">
+                <h4 class="darkgreen">What is This App?</h4>
+                <p>This app analyzes data from the Titanic disaster and uses machine learning to predict survival outcomes.</p>
+                
+                <div class="question">📊 Features used:</div>
+                <ul>
+                    <li>Passenger Class (Pclass)</li>
+                    <li>Sex & Age</li>
+                    <li>Fare</li>
+                    <li>Relatives Aboard</li>
+                </ul>
+
+                <div class="question">🔍 What You’ll Learn:</div>
+                <ul>
+                    <li>Data Preprocessing & Cleaning</li>
+                    <li>Feature Engineering</li>
+                    <li>Model Training & Evaluation</li>
+                </ul>
+
+            
+                <div class="question">🚀 Ready to Predict?</div>
+                <form action="{{ url_for('questions') }}">
+    <button type="submit">Start Predicating</button>
+</form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Titanic ML App | Kanak Waradkar</p>
+    </footer>
+
+</body>
+</html>
