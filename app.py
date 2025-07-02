@@ -33,6 +33,5 @@ def predict():
         return render_template('questions.html', prediction_text='No, you will not survive the Titanic!')
 
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
