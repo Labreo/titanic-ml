@@ -1,0 +1,15 @@
+# .gitignore for the Titanic ML project
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo                                  
+# Ignore virtual environment directories
+venv/
+.venv/
+# Ignore environment variable files
+.env
+
+# Ignore macOS specific files
+*.DS_Store
+
+.ipynb_checkpoints/

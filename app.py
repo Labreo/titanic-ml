@@ -1,6 +1,7 @@
 import numpy as np
 from flask import Flask,request,render_template
 import pickle
+import pandas as pd
 app=Flask(__name__)
 model=pickle.load(open('models/model.pkl','rb'))
 
@@ -17,14 +18,16 @@ def predict():
     pclass = int(request.form['Pclass'])
     sex = request.form['Sex']
     age = float(request.form['Age'])
-    sibsp = int(request.form['SibSp'])
-    parch = int(request.form['Parch'])
+    sibsp = int(request.form['Siblings/Spouses Aboard'])
+    parch = int(request.form['Parents/Children Aboard'])
     fare = float(request.form['Fare'])
 
     sex_encoded = 0 if sex == 'male' else 1
-    final_features = [pclass, sex_encoded, age, sibsp, parch, fare]
+    feature_names=['Pclass','Sex','Age','Siblings/Spouses Aboard', 'Parents/Children Aboard', 'Fare']
+    final_features =[[pclass, sex_encoded, age, sibsp, parch, fare]]
+    df=pd.DataFrame(final_features, columns=feature_names)
 
-    prediction = model.predict([final_features])
+    prediction = model.predict(df)
     output = round(prediction[0], 2)
 
     if output==1:

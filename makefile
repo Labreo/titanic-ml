@@ -10,4 +10,5 @@ run:
 
 test:
 	docker run --rm $(IMAGE) python -m unittest discover -s tests
-
+pathtest:
+	PYTHONPATH=. pytest
