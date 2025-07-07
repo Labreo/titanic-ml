@@ -186,9 +186,11 @@ jobs:
 
 ## Screenshots
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+![Index](images/image.png)
+---
+![Predection Page](images/image-1.png)
+---
+![Result](images/image-2.png)
 
 ---
 
