@@ -28,13 +28,14 @@ def test_predict(client):
     'Pclass': '1',
     'Sex': 'female',
     'Age': '30',
-    'Siblings/Spouses Aboard': '0',
-    'Parents/Children Aboard': '0',
+    'sibsp': '0',
+    'parch': '0',
     'Fare': '100'
 
     }
     
     response = client.post('/predict', data=data)
     assert response.status_code == 200
-    html = response.get_data(as_text=True)
-    assert 'Yes,you will survive the Titanic!' in html or 'No,you will not survive the Titanic!' in html
+    assert response.is_json
+    json_data = response.get_json()
+    assert 'prediction' in json_data
