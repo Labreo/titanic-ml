@@ -1,5 +1,5 @@
 import numpy as np
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,jsonify
 import pickle
 import pandas as pd
 app=Flask(__name__)
@@ -18,8 +18,8 @@ def predict():
     pclass = int(request.form['Pclass'])
     sex = request.form['Sex']
     age = float(request.form['Age'])
-    sibsp = int(request.form['Siblings/Spouses Aboard'])
-    parch = int(request.form['Parents/Children Aboard'])
+    sibsp = int(request.form['sibsp'])
+    parch = int(request.form['parch'])
     fare = float(request.form['Fare'])
 
     sex_encoded = 0 if sex == 'male' else 1
@@ -31,9 +31,11 @@ def predict():
     output = round(prediction[0], 2)
 
     if output==1:
-        return render_template('questions.html', prediction_text='Yes,you will survive the Titanic!')
+         prediction_text='Yes,you will survive the Titanic!'
     else:
-        return render_template('questions.html', prediction_text='No, you will not survive the Titanic!')
+        prediction_text='No, you will not survive the Titanic!'
+    return jsonify({"prediction": prediction_text})
+
 
 
 if __name__ == '__main__':

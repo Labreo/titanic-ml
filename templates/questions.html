@@ -11,7 +11,7 @@
   <h1 class="appname textclr">Titanic Survivability Rate</h1>
 
   <main class="login">
-    <form action="{{ url_for('predict') }}" method="POST">
+    <form id="predictForm">
         
         <p class="question textclr">What is your passenger class?</p>
         <label class="textclr"><input class="radio-input" type="radio" name="Pclass" value="1" required>1</label>
@@ -26,162 +26,51 @@
         <input class="age-input" type="number" name="Age" placeholder="Enter your age" step="1" min="0" required><br>
 
         <p class="question textclr">How many siblings or spouses aboard?</p>
-        <input class="age-input" type="number" name="SibSp" placeholder="Enter number" step="1" min="0" required><br>
+        <input class="age-input" type="number" name="sibsp" placeholder="Enter number" step="1" min="0" required><br>
 
-        <p class="question textclr"></p>How many parents or children do you have aboard?</p>
-        <input class="age-input" type="number" name="Parch" placeholder="Enter number" step="1" min="0" required><br>
+        <p class="question textclr">How many parents or children do you have aboard?</p>
+        <input class="age-input" type="number" name="parch" placeholder="Enter number" step="1" min="0" required><br>
 
         <p class="question textclr">What was your fare?</p>
         <input class="age-input" type="number" name="Fare" placeholder="Enter fare amount" step="0.01" min="0" required><br>
 
         <button type="submit" class="btn-submit">Will You Survive?</button>
-        <br>
-         <h1>Prediction Result</h1>
-
-        {% if prediction_text %}
-            <p class="textclr">{{ prediction_text }}</p>
-        {% endif %}
+        
     </form>
   </main>
+<div id="popup" class="popup-box">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Prediction Result</h2>
+    <p id="popup-result-text"></p>
+  </div>
+</div>
+  <script>
+  const form = document.getElementById('predictForm');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault(); // prevent regular form submission
+
+    const formData = new FormData(form);
+
+    const response = await fetch("{{ url_for('predict') }}", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();  // expecting JSON back
+    document.getElementById("popup-result-text").innerText = data.prediction;
+    openPopup();
+  });
+
+  function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
 </body>
 </html>
-
-<style>
-body {
-    background: #1a2238;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.appname {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    color: #eaeaea;
-}
-h1 {
-    text-align: center;
-    color: #ff6a3d;
-    margin-bottom: 24px;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type="number"] {
-    appearance: textfield;
-}
-
-p.question {
-    margin-top: 16px;
-    margin-bottom: 4px;
-    color: #ffb86c;
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
-h1 + main .login {
-    margin-top: 18px;
-}
-
-p.textclr {
-    color: #ffb86c;
-    text-align: center;
-    font-size: 1.1rem;
-    margin-top: 18px;
-}
-.login {
-    background: #222c3c;
-    max-width: 400px;
-    margin: 40px auto 0 auto;
-    padding: 32px 32px 24px 32px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-.question {
-    margin: 18px 0 8px 0;
-    font-size: 1.1rem;
-    color: #eaeaea;
-    font-weight: 500;
-}
-
-.textclr {
-    color: #eaeaea;
-}
-
-.radio-input {
-    margin-right: 8px;
-    accent-color: #ff6a3d;
-}
-
-.age-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 8px;
-    border: none;
-    border-radius: 8px;
-    background: #29304a;
-    color: #eaeaea;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.age-input::placeholder {
-    color: #b0b0b0;
-    opacity: 1;
-}
-
-.btn-submit {
-    margin-top: 24px;
-    width: 100%;
-    padding: 12px 0;
-    background: linear-gradient(90deg, #ff6a3d 0%, #ffb86c 100%);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(255, 106, 61, 0.15);
-}
-
-.btn-submit:hover {
-    background: linear-gradient(90deg, #ffb86c 0%, #ff6a3d 100%);
-}
-
-label.textclr {
-    margin-right: 18px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-@media (max-width: 500px) {
-    .login {
-        max-width: 95vw;
-        padding: 18px 8px 16px 8px;
-    }
-    .appname {
-        font-size: 1.5rem;
-        margin-top: 18px;
-    }
-}
-</style>
