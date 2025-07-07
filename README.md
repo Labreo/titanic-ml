@@ -58,6 +58,10 @@ titanic-ml/
 ├── app.py
 ├── data
 │   └── titanic.csv
+├─ images
+│   ├── image-1.png
+│   ├── image-2.png
+│   └── image.png
 ├── makefile
 ├── models
 │   └── model.pkl
@@ -179,7 +183,7 @@ jobs:
 
 - [GitHub Actions Docs](https://docs.github.com/en/actions)
 - [Docker Docs](https://docs.docker.com/)
-- [GCP Getting Started](https://cloud.google.com/gcp/get-started)
+- [GCP Getting Started](https://cloud.google.com/docs/tutorials?doctype=quickstart)
 - [Stackdriver Logging](https://cloud.google.com/logging)
 
 ---

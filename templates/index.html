@@ -5,25 +5,28 @@
     <title>Titanic Prediction App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-    
 </head>
 <body>
 
+    <!-- App Title -->
     <div class="appname textclr">
         <h1>Titanic Survival Prediction</h1>
     </div>
 
     <main>
-        <div class="news-section">
+
+        <!-- Project Intro -->
+        <section class="news-section">
             <h2 class="news-sec-head darkgreen">Why Titanic Dataset?</h2>
             <div class="news" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fd/RMS_Titanic_3.jpg');">
                 <p id="news-title">A historic dataset used to predict passenger survival using machine learning.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="info-section">
+        <!-- App Purpose & Features -->
+        <section class="info-section">
             <div class="info-desc textclr">
-                <h4 class="darkgreen">What is This App?</h4>
+                <h4 class="darkgreen">🧠 What is This App?</h4>
                 <p>This app analyzes data from the Titanic disaster and uses machine learning to predict survival outcomes.</p>
                 
                 <div class="question">📊 Features used:</div>
@@ -31,27 +34,55 @@
                     <li>Passenger Class (Pclass)</li>
                     <li>Sex & Age</li>
                     <li>Fare</li>
-                    <li>Relatives Aboard</li>
+                    <li>Number of Relatives Aboard (SibSp + Parch)</li>
                 </ul>
 
                 <div class="question">🔍 What You’ll Learn:</div>
                 <ul>
-                    <li>Data Preprocessing & Cleaning</li>
-                    <li>Feature Engineering</li>
-                    <li>Model Training & Evaluation</li>
+                    <li>Data Cleaning & Preprocessing</li>
+                    <li>Feature Engineering & Encoding</li>
+                    <li>Model Selection (Logistic Regression, Random Forest)</li>
+                    <li>Accuracy & Evaluation Metrics</li>
                 </ul>
 
-            
+                <div class="question">⚙️ Tech Stack Used:</div>
+                <ul>
+                    <li>Frontend: HTML, CSS</li>
+                    <li>Backend: Python (Flask)</li>
+                    <li>ML Models: Scikit-learn</li>
+                    <li>Deployment: (Optional) Docker / Heroku / GCP</li>
+                </ul>
+
+                <div class="question">📈 Model Accuracy:</div>
+                <ul>
+                    <li>Logistic Regression: ~78.5%</li>
+                    <li>Random Forest: ~81%</li>
+                </ul>
+
+                <!-- Call to action -->
                 <div class="question">🚀 Ready to Predict?</div>
                 <form action="{{ url_for('questions') }}">
-    <button type="submit">Start Predicating</button>
-</form>
+                    <button type="submit">Start Predicting</button>
+                </form>
             </div>
-        </div>
+        </section>
+
+        <!-- About Titanic -->
+        <section class="info-section textclr">
+            <h4 class="darkgreen">🧊 The Titanic Tragedy</h4>
+            <p>The RMS Titanic sank on April 15, 1912, after hitting an iceberg. Over 1,500 of the 2,224 passengers and crew died. This dataset allows us to explore survival patterns based on age, gender, class, and more.</p>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="info-section textclr">
+            <h4 class="darkgreen">⚠️ Disclaimer</h4>
+            <p>This project is for educational purposes only. Predictions are based on historical data and simplified models. It does not reflect real-life decision-making complexity or accuracy.</p>
+        </section>
+
     </main>
 
     <footer>
-        <p>© 2025 Titanic ML App | Kanak Waradkar</p>
+        <p>2025 Titanic ML App | Built by Labreo</p>
     </footer>
 
 </body>
