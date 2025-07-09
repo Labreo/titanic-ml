@@ -13,3 +13,4 @@ mlruns/
 mlflow.db
 Dockerfile
 .dockerignore
+experiments/
