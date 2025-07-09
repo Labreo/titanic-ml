@@ -6,3 +6,4 @@ scikit-learn
 flask
 pytest
 flake8
+mlflow
