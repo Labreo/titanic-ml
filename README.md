@@ -32,6 +32,7 @@ This project includes:
 - Deployed on GCP with a public IP
 - Remote logs viewable via `docker logs` or Stackdriver (GCP Logging)
 - MLflow used to log parameters, metrics, and models for each experiment
+- Created a model registery with 3 algorithms to better understand and pickout algorithms by choice.
 
 ---
 ## Algortihms tested
@@ -55,6 +56,7 @@ This project includes:
 | Black / Flake8      | Python code formatting/linting |
 | Pandas, NumPy       | Data preprocessing             |
 | Seaborn, Matplotlib | Data visualization             |
+| MlFlow              | Data logging and management    |
 
 ---
 
@@ -73,7 +75,8 @@ titanic-ml/
 │   └── image.png
 ├── makefile
 ├── models
-│   └── model.pkl
+│   ├── model.pkl
+├   └── modelv2.pkl
 ├── notebooks
 │   ├── titanic_eda.ipynb
 │   └── titanic_model.ipynb
