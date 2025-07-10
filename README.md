@@ -13,6 +13,12 @@ This project includes:
 
 ---
 
+### Blogs
+
+📘 Blog Post: [Tracking ML Experiments with MLflow](https://diving-into-mlopsbeginners-guide.hashnode.dev/tracking-ml-experiments-with-mlflow-a-simple-guide-for-beginners)
+
+---
+
 ### Live App URL
 
 [**https://titanic-ml-q8ua.onrender.com**](https://titanic-ml-q8ua.onrender.com)
