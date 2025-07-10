@@ -9,6 +9,7 @@ This project includes:
 - Dockerization
 - Cloud deployment (GCP Compute Engine)
 - Basic log monitoring
+- MLflow experiment tracking
 
 ---
 
@@ -30,6 +31,7 @@ This project includes:
 - CI with linting and testing on push
 - Deployed on GCP with a public IP
 - Remote logs viewable via `docker logs` or Stackdriver (GCP Logging)
+- MLflow used to log parameters, metrics, and models for each experiment
 
 ---
 
