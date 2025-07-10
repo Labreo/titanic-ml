@@ -4,7 +4,7 @@ import pandas as pd
 from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
-model = pickle.load(open("models/model.pkl", "rb"))
+model = pickle.load(open("models/modelv2.pkl", "rb"))
 
 
 @app.route("/")

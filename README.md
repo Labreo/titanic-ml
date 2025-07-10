@@ -34,6 +34,13 @@ This project includes:
 - MLflow used to log parameters, metrics, and models for each experiment
 
 ---
+## Algortihms tested
+
+- Random Forest - 77% accuracy.
+- Logistic Regression - 81% accuracy.
+- Gradient Boosting - 82% accuracy.
+- Used gradient boosting due to better accuracy values.
+---
 
 ## Technologies Used
 
